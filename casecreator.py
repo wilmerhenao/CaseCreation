@@ -14,6 +14,39 @@ from abc import ABCMeta
 import numpy as np
 import scipy as sp
 
+## Class with static information about the case
+class caseinfo:
+    isoX = 0.0
+    isoY = 0.0
+    isoZ = 0.0
+    def __init__(self, x = 0.0, y = 0.0, z = 0.0):
+        isoX = x
+        isoY = y
+        isoZ = z
+## Initialize an instance. This is not necessary but it is good practice.
+thiscase = caseinfo(0.0, 0.0, 0.0)
+
+## Class that uses a data triplet and implements some geographical operations
+class geoloc:
+    def __init__(self, x = 0.0, y = 0.0, z = 0.0):
+        self.x = x
+        self.y = y
+        self.z = z
+    ## This function calculates the distance from my geographical location to the center of a beamlet
+    def distToBeamC(self, xBeamC, yBeamC , zBeamC ):
+        d = np.sqrt(np.sum((self.x - xBeamC )^2 + (self.y - yBeamC )^2 + (self.z - zBeamC )^2))
+        return(d)
+    ## Function to calculate distance from this point to isocenter
+    def distToIsoC(self, xisoC, yisoC , zisoC ):
+        d = np.sqrt(np.sum((self.x - xisoC )^2 + (self.y - yisoC )^2 + (self.z - zisoC )^2))
+        return(d)
+
+    def depthBeamC(self, xBeamC, yBeamC, zBeamC, dBeamlettoIso):
+        ## Use the cosine law to calculate the angle formed by the line from isocenter to this point and the line from
+        # beamlet center to this point.
+        c = dBeamlettoIso
+        a = distToIsoC()
+
 ## Abstract class that implements a volume of interest with common location and radius. Parent of OAR and TARGET
 class VOI:
     __metaclass__ = ABCMeta
@@ -25,7 +58,6 @@ class VOI:
         ## Radius of the Volume of Interest. All of them are circumferences
         self.radius = r
         self.isTarget = None
-        self.isOAR = None
     ## This method finds whether the attribute is viable, given its center and radius and given the center and radius
     ## of the original body that contains it
     def isContained(self, rbody):
@@ -44,7 +76,6 @@ class OAR(VOI):
     def __init__(self, x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = True
-        self.isOAR = False
         super(OAR, self).__init__(x, y, r)
 
     def printVOI(self):
@@ -54,11 +85,12 @@ class TARGET(VOI):
     def __init__(self, x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = False
-        self.isOAR = True
-        super(VOI, self).__init__(x, y, r)
+        super(TARGET, self).__init__(x, y, r)
 
     def printVOI(self):
         print('Target with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
+
+class voxel:
 
 ## This function takes a list of numeric values as arguments and produces the list of D matrices
 ## The box has isocenter on position 0,0.
