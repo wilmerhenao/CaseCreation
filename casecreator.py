@@ -16,6 +16,8 @@ import scipy as sp
 import matplotlib.pyplot as plt
 import pylab
 import itertools
+import math
+from scipy.sparse import csr_matrix
 
 ## Class with static information about the case
 class caseinfo:
@@ -33,7 +35,7 @@ class caseinfo:
         self.isoX = x
         self.isoY = y
         self.R = radio
-        self.genFan2D = np.transpose(np.matrix([[self.interleaf * (i - self.N/2 + 1/2), self.SAD] for i in range(0, self.N)]))
+        self.genFan2D = np.matrix([[self.interleaf * (i - self.N/2 + 1/2), self.SAD] for i in range(0, self.N)]).transpose()
 
 ## Class that uses a data pair and implements some geographical operations. Depth of the voxel given beam.
 class geoloc:
@@ -149,10 +151,21 @@ class TARGET(VOI):
 ## The next class defines a control point; in particular, the location of all beamlets
 class ControlPoint:
     def __init__(self, ctrlAngle):
-        angleDegs = ctrlAngle
-        angleRads = (2 * np.pi * angleDegs)/360
-        rotMat = np.matrix([[np.cos(angleRads), -np.sin(angleRads)], [np.sin(angleRads), np.cos(angleRads)]])
-        thisFan = rotMat * thiscase.genFan2D
+        self.angleDegs = ctrlAngle
+        self.angleRads = (2 * np.pi * self.angleDegs)/360
+        rotMat = np.matrix([[np.cos(self.angleRads), -np.sin(self.angleRads)], [np.sin(self.angleRads), np.cos(self.angleRads)]])
+        self.thisFan = rotMat * thiscase.genFan2D
+        ## Find the unit vector that points towards the isocenter
+        self.UnitVector = (-np.cos(self.angleRads), -np.sin(self.angleRads))
+        self.normaltoUnit = (-self.UnitVector[1], self.UnitVector[0])
+    ## Find normal distances to each of the beamlet array centers.
+    def findNDist(self, x, y):
+        distances = []
+        for i in range(0, thiscase.N):
+            beamlet = (self.thisFan[0,i], self.thisFan[1,i])
+            vecpos = x - beamlet[0], y - beamlet[1]
+            distances.append(math.fabs(vecpos[1] * self.normaltoUnit[0] + vecpos[0] * self.normaltoUnit[1]))
+        return(distances)
 
 class voxel:
     def __init__(self, vc, OARS, TARGETS):
@@ -165,6 +178,11 @@ class voxel:
             if voi.isInThisVOI(self.x, self.y):
                 self.belongsToVOI = True
                 self.inStructureID = voi.VOIID
+
+## This function calculates the total dose given a depth
+def calcDose(depth):
+    return(1/depth)
+
 ## This function takes a list of numeric values as arguments and produces the list of D matrices
 ## The box has isocenter on position thiscase.x
 # Inputs:
@@ -189,11 +207,19 @@ def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OA
     voxelcenters = itertools.product(voxelhoz, voxelvec)
     ## Limit the list only to those voxels that are included in the body and assign a organ to them
     allvoxels = [voxel(voxelcenter, OARS, TARGETS) for voxelcenter in voxelcenters]
-    ## Filter only those voxels that belong in any VOI
+    ## Filter only those voxels that belong in any VOI. This is the order that will be preserved
     voxels = [vxinvoi for vxinvoi in allvoxels if vxinvoi.belongsToVOI]
-    [print(i.inStructureID) for i in voxels]
     allvoxels = None # Free some memory
-    return(1)
+
+    Dlist = []
+    ## Create a matrix for each of the control points.
+    for cp in cps:
+        D = csr_matrix((len(voxels), caseinfo.N), dtype=np.float)
+        for v in voxels:
+            dists = cp.findNDist(v.x, v.y)
+            print(dists)
+        Dlist.append(D)
+    return(Dlist)
 
 ## Implementation part that should be separated later
 def plotstructure(OARlist, TARGETlist, xgeo, ygeo):
