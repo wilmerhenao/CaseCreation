@@ -15,6 +15,7 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 import pylab
+import itertools
 
 ## Class with static information about the case
 class caseinfo:
@@ -106,25 +107,36 @@ class VOI:
         if distcenter + self.radius > thiscase.R:
             isv = False
         return (isv)
+    ## This method takes a location in space and returns whether this location exists in this VOI or not
+    def isInThisVOI(self, x, y):
+        isinit = False
+        distcenter = np.sqrt((self.xcenter - x) ** 2 + (self.ycenter - y) ** 2)
+        if distcenter <= self.radius:
+            isinit = True
+        return(isinit)d
     # Abstract method to be implemented by classes deriving from here
     @abstractmethod
     def printVOI(self):
         pass
 
 class OAR(VOI):
+    numOARS = 0.0
     def __init__(self, x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = True
         super(OAR, self).__init__(x, y, r)
+        self.numOARS = self.numOARS + 1
 
     def printVOI(self):
         print('OAR with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
 
 class TARGET(VOI):
+    numTARGETS = 0.0
     def __init__(self, x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = False
         super(TARGET, self).__init__(x, y, r)
+        self.numTARGETS = self.numTARGETS + 1
     def printVOI(self):
         print('Target with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
 
@@ -134,9 +146,6 @@ class ControlPoint:
         angleDegs = ctrlAngle
         angleRads = (2 * np.pi * angleDegs)/360
         rotMat = np.matrix([[np.cos(angleRads), -np.sin(angleRads)], [np.sin(angleRads), np.cos(angleRads)]])
-        print(rotMat)
-        print('pisfhsalk')
-        print(thiscase.genFan2D)
         thisFan = rotMat * thiscase.genFan2D
         print(thisFan, thisFan.shape)
 
@@ -159,6 +168,10 @@ class ControlPoint:
 def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius):
     ## Generate 360 control points
     cps = [ControlPoint(i) for i in anglelist]
+    ## Create voxels
+    voxelhoz = np.arange(-xgeoloc, xgeoloc, 2 * xgeoloc/numhozv) + xgeoloc/numhozv
+    voxelvec = np.arange(-ygeoloc, ygeoloc, 2 * ygeoloc/numverv) + ygeoloc/numverv
+    voxelcenters = itertools.product(voxelhoz, voxelvec)
     return()
 
 ## Implementation part that should be separated later
@@ -203,4 +216,5 @@ xgeoloc = bodyradius
 ygeoloc = bodyradius
 radius = bodyradius
 anglelist = [i * 360 / 51 for i in range(0, 51)]
+
 createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius)
