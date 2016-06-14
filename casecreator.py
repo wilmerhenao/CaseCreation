@@ -21,10 +21,18 @@ class caseinfo:
     isoX = 0.0
     isoY = 0.0
     R = 1.0
+    ## Number of beamlets in the fan
+    N = 64
+    interleaf = 0.6
+    ## Source to axis distance calibration in cms
+    SAD = 80
+    ## Original fan
+    genFan2D = None
     def __init__(self, x = 0.0, y = 0.0, radio = 1.0):
         self.isoX = x
         self.isoY = y
         self.R = radio
+        self.genFan2D = np.transpose(np.matrix([[self.interleaf * (i - self.N/2 + 1/2), self.SAD] for i in range(0, self.N)]))
 
 ## Class that uses a data pair and implements some geographical operations. Depth of the voxel given beam.
 class geoloc:
@@ -60,10 +68,10 @@ class geoloc:
         dr = np.sqrt(dx**2 + dy**2)
         D = x1 * y2 - x2 * y1
         ## There are two point of intersection
-        xinterp = (D * dy + np.sign(dy) * dx * np.sqrt(caseinfo.R**2 * dr**2 - D**2))/(dr**2)
-        xinterm = (D * dy - np.sign(dy) * dx * np.sqrt(caseinfo.R**2 * dr**2 - D**2))/(dr**2)
-        yinterp = (-D * dx + np.abs(dy) * np.sqrt(caseinfo.R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
-        yinterm = (-D * dx - np.abs(dy) * np.sqrt(caseinfo.R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
+        xinterp = (D * dy + np.sign(dy) * dx * np.sqrt(thiscase.R**2 * dr**2 - D**2))/(dr**2)
+        xinterm = (D * dy - np.sign(dy) * dx * np.sqrt(thiscase.R**2 * dr**2 - D**2))/(dr**2)
+        yinterp = (-D * dx + np.abs(dy) * np.sqrt(thiscase.R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
+        yinterm = (-D * dx - np.abs(dy) * np.sqrt(thiscase.R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
         ## Check which one of the intersection points lies in the segment
         if (self.isinterior(xinterp, xBeamC)):
             intX = xinterp
@@ -75,6 +83,7 @@ class geoloc:
         assert(np.min(xBeamC, self.x) <= intX and intX <= np.max(xBeamC, self.x))
         ## Use the point of intersection to calculate the depth of the voxel
         self.depth = np.sqrt((intX - self.x)**2 + (intY - self.y)**2)
+
 
 ## Abstract class that implements a volume of interest with common location and radius. Parent of OAR and TARGET
 class VOI:
@@ -93,8 +102,8 @@ class VOI:
     def isContained(self):
         isv = True
         ## Find radius from center of VOI to center of structure
-        distcenter = np.sqrt((self.xcenter - caseinfo.isoX)**2 + (self.ycenter - caseinfo.isoY)**2)
-        if distcenter + self.radius > caseinfo.R:
+        distcenter = np.sqrt((self.xcenter - thiscase.isoX)**2 + (self.ycenter - thiscase.isoY)**2)
+        if distcenter + self.radius > thiscase.R:
             isv = False
         return (isv)
     # Abstract method to be implemented by classes deriving from here
@@ -119,10 +128,22 @@ class TARGET(VOI):
     def printVOI(self):
         print('Target with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
 
+## The next class defines a control point; in particular, the location of all beamlets
+class ControlPoint:
+    def __init__(self, ctrlAngle):
+        angleDegs = ctrlAngle
+        angleRads = (2 * np.pi * angleDegs)/360
+        rotMat = np.matrix([[np.cos(angleRads), -np.sin(angleRads)], [np.sin(angleRads), np.cos(angleRads)]])
+        print(rotMat)
+        print('pisfhsalk')
+        print(thiscase.genFan2D)
+        thisFan = rotMat * thiscase.genFan2D
+        print(thisFan, thisFan.shape)
+
 #class voxel:
 
 ## This function takes a list of numeric values as arguments and produces the list of D matrices
-## The box has isocenter on position caseinfo.x
+## The box has isocenter on position thiscase.x
 # Inputs:
 # anglelist = [list of numeric]. These are the control points
 # numhozv = Number of horizontal voxel divisions
@@ -135,30 +156,34 @@ class TARGET(VOI):
 # Outputs:
 # listofD = List of D matrix objects
 # upper right corner is (X,Y), lower left corner is (-X, -Y)
-#def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius):
-
-#    return(listofD)
+def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius):
+    ## Generate 360 control points
+    cps = [ControlPoint(i) for i in anglelist]
+    return()
 
 ## Implementation part that should be separated later
-def plotstructure(OARlist, TARGETlist):
-    print('im here')
+def plotstructure(OARlist, TARGETlist, xgeo, ygeo):
     ## This function plots the case to make sure that everything is understood
     numOARS = len(OARlist)
     numTARGETS = len(TARGETlist)
     # Plot the outside circle
-    circlemain = plt.Circle((caseinfo.isoX, caseinfo.isoY), thiscase.R, color = 'blue')
+    circlemain = plt.Circle((thiscase.isoX, thiscase.isoY), thiscase.R, color = 'blue', fill = False)
     fig = plt.gcf()
     fig.gca().add_artist(circlemain)
-    pylab.xlim([-10,10])
-    pylab.ylim([-10,10])
+    pylab.xlim([-xgeo, xgeo])
+    pylab.ylim([-ygeo, ygeo])
     for i in range(0, numOARS):
-        circle = plt.Circle((OARlist[i].xcenter, OARlist[i].ycenter), OARlist[i].radius, color = 'g')
+        circle = plt.Circle((OARlist[i].xcenter, OARlist[i].ycenter), OARlist[i].radius, color = 'g', fill = False)
         fig.gca().add_artist(circle)
     for i in range(0, numTARGETS):
-        circle = plt.Circle((TARGETlist[i].xcenter, TARGETlist[i].ycenter), TARGETlist[i].radius, color = 'r')
+        circle = plt.Circle((TARGETlist[i].xcenter, TARGETlist[i].ycenter), TARGETlist[i].radius, color = 'r', fill = False)
         fig.gca().add_artist(circle)
+    fig.suptitle('Case Plot')
     fig.savefig('plotcase.png')
 
+
+bodyradius = 7.0
+thiscase = caseinfo(0.0, 0.0, bodyradius)
 ## Create 3 OARs around the body
 OARlist = []
 OARlist.append(OAR(5.0, 0.0, 1.0))
@@ -169,5 +194,13 @@ TARGETlist.append(TARGET(0.0, 0.0, 2.0))
 TARGETlist.append(TARGET(-4.0, -4.0, 1.2))
 
 ## Initialize an instance. This is not necessary but it is good practice.
-thiscase = caseinfo(0.0, 0.0, 7.0)
-plotstructure(OARlist, TARGETlist)
+xgeoloc = bodyradius
+ygeoloc = bodyradius
+plotstructure(OARlist, TARGETlist, xgeoloc, ygeoloc)
+numhozv = 20
+numverv = 20
+xgeoloc = bodyradius
+ygeoloc = bodyradius
+radius = bodyradius
+anglelist = [i * 360 / 51 for i in range(0, 51)]
+createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius)
