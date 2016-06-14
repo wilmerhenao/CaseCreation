@@ -85,9 +85,9 @@ class geoloc:
         ## Use the point of intersection to calculate the depth of the voxel
         self.depth = np.sqrt((intX - self.x)**2 + (intY - self.y)**2)
 
-
 ## Abstract class that implements a volume of interest with common location and radius. Parent of OAR and TARGET
 class VOI:
+    numVOIs = 0
     __metaclass__ = ABCMeta
     def __init__(self, x = 0.0, y = 0.0, r = 0.0):
         ## X location of center
@@ -98,6 +98,8 @@ class VOI:
         self.radius = r
         self.isTarget = None
         self.isinside = self.isContained()
+        self.VOIID = VOI.numVOIs
+        VOI.numVOIs = VOI.numVOIs + 1
     ## This method finds whether the attribute is viable, given its center and radius and given the center and radius
     ## of the original body that contains it
     def isContained(self):
@@ -113,30 +115,34 @@ class VOI:
         distcenter = np.sqrt((self.xcenter - x) ** 2 + (self.ycenter - y) ** 2)
         if distcenter <= self.radius:
             isinit = True
-        return(isinit)d
+        return(isinit)
     # Abstract method to be implemented by classes deriving from here
     @abstractmethod
     def printVOI(self):
         pass
 
 class OAR(VOI):
-    numOARS = 0.0
+    numOARS = 0
     def __init__(self, x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = True
         super(OAR, self).__init__(x, y, r)
-        self.numOARS = self.numOARS + 1
+        ## Assign an ID to each of the different OARs
+        self.OARID = OAR.numOARS
+        OAR.numOARS = OAR.numOARS + 1
 
     def printVOI(self):
         print('OAR with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
 
 class TARGET(VOI):
-    numTARGETS = 0.0
+    numTARGETS = 0
     def __init__(self, x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = False
         super(TARGET, self).__init__(x, y, r)
-        self.numTARGETS = self.numTARGETS + 1
+        ## Assign an ID to each of the different targets
+        self.TARGETID = TARGET.numTARGETS
+        TARGET.numTARGETS = TARGET.numTARGETS + 1
     def printVOI(self):
         print('Target with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
 
@@ -147,10 +153,18 @@ class ControlPoint:
         angleRads = (2 * np.pi * angleDegs)/360
         rotMat = np.matrix([[np.cos(angleRads), -np.sin(angleRads)], [np.sin(angleRads), np.cos(angleRads)]])
         thisFan = rotMat * thiscase.genFan2D
-        print(thisFan, thisFan.shape)
 
-#class voxel:
-
+class voxel:
+    def __init__(self, vc, OARS, TARGETS):
+        self.x = vc[0]
+        self.y = vc[1]
+        self.belongsToVOI = False
+        self.inStructureID = None
+        ## Run this code for all OARs and TARGETs, preference to targets
+        for voi in OARS + TARGETS:
+            if voi.isInThisVOI(self.x, self.y):
+                self.belongsToVOI = True
+                self.inStructureID = voi.VOIID
 ## This function takes a list of numeric values as arguments and produces the list of D matrices
 ## The box has isocenter on position thiscase.x
 # Inputs:
@@ -165,14 +179,21 @@ class ControlPoint:
 # Outputs:
 # listofD = List of D matrix objects
 # upper right corner is (X,Y), lower left corner is (-X, -Y)
-def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius):
+def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARS, TARGETS):
     ## Generate 360 control points
     cps = [ControlPoint(i) for i in anglelist]
     ## Create voxels
     voxelhoz = np.arange(-xgeoloc, xgeoloc, 2 * xgeoloc/numhozv) + xgeoloc/numhozv
     voxelvec = np.arange(-ygeoloc, ygeoloc, 2 * ygeoloc/numverv) + ygeoloc/numverv
+    ## Create cartesian product to find voxel centers
     voxelcenters = itertools.product(voxelhoz, voxelvec)
-    return()
+    ## Limit the list only to those voxels that are included in the body and assign a organ to them
+    allvoxels = [voxel(voxelcenter, OARS, TARGETS) for voxelcenter in voxelcenters]
+    ## Filter only those voxels that belong in any VOI
+    voxels = [vxinvoi for vxinvoi in allvoxels if vxinvoi.belongsToVOI]
+    [print(i.inStructureID) for i in voxels]
+    allvoxels = None # Free some memory
+    return(1)
 
 ## Implementation part that should be separated later
 def plotstructure(OARlist, TARGETlist, xgeo, ygeo):
@@ -193,7 +214,6 @@ def plotstructure(OARlist, TARGETlist, xgeo, ygeo):
         fig.gca().add_artist(circle)
     fig.suptitle('Case Plot')
     fig.savefig('plotcase.png')
-
 
 bodyradius = 7.0
 thiscase = caseinfo(0.0, 0.0, bodyradius)
@@ -217,4 +237,4 @@ ygeoloc = bodyradius
 radius = bodyradius
 anglelist = [i * 360 / 51 for i in range(0, 51)]
 
-createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius)
+createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARlist, TARGETlist)
