@@ -155,7 +155,6 @@ class ControlPoint:
         ## Find the unit vector that points towards the isocenter
         self.UnitVector = (np.sin(self.angleRads), -np.cos(self.angleRads))
         self.normaltoUnit = (-self.UnitVector[1], self.UnitVector[0])
-        print('angle in radians, degrees and unit vectors: ', self.angleRads, self.angleDegs, self.UnitVector)
     ## Find normal distances to each of the beamlet array centers
     def findNDist(self, x, y):
         distances = []
@@ -217,11 +216,16 @@ def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OA
     for cp in cps:
         D = csr_matrix((len(voxels), caseinfo.N), dtype = np.float)
         for v in voxels:
-            dists = cp.findNDist(v.x, v.y)
-            #print('Ds', v.x, v.y, dists)
-            print(np.min(dists))
+            bs = findvoxbeamlets(v.x, v.y, cp)
+            print('bs:', bs)
         Dlist.append(D)
     return(Dlist)
+
+## This function is here to find the beamlets associated with a particular voxel at a certain control point
+## You should be able to change it in case the team requires a different function
+def findvoxbeamlets(x, y, cp):
+    dists = cp.findNDist(x, y)
+    return([(i, dists[i]) for i in range(0, len(dists)) if dists[i] < 0.6/2])
 
 ## Implementation part that should be separated later
 def plotstructure(OARlist, TARGETlist, xgeo, ygeo):
@@ -243,15 +247,15 @@ def plotstructure(OARlist, TARGETlist, xgeo, ygeo):
     fig.suptitle('Case Plot')
     fig.savefig('plotcase.png')
 
-bodyradius = 7.0
+bodyradius = 25.0
 thiscase = caseinfo(0.0, 0.0, bodyradius)
 ## Create 3 OARs around the body
 OARlist = []
-OARlist.append(OAR(5.0, 0.0, 1.0))
-OARlist.append(OAR(3.0, 2.0, 2.5))
+OARlist.append(OAR(15.0, 0.0, 7.0))
+OARlist.append(OAR(8.0, 12.0, 2.5))
 OARlist.append(OAR(-3.0, 2.0, 1.3))
 TARGETlist = []
-TARGETlist.append(TARGET(0.0, 0.0, 2.0))
+TARGETlist.append(TARGET(0.0, 0.0, 2.2))
 TARGETlist.append(TARGET(-4.0, -4.0, 1.2))
 
 ## Initialize an instance. This is not necessary but it is good practice.
