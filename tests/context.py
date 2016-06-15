@@ -22,6 +22,7 @@ TARGETlist.append(casecreator.TARGET(thiscase, 5.0, 5.0, 2.7))
 
 xgeoloc = bodyradius
 ygeoloc = bodyradius
+
 numhozv = 10
 numverv = 10
 radius = bodyradius
