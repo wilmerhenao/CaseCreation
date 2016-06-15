@@ -47,8 +47,8 @@ class voxelbeamletpair:
     def distToBeamC(self, xBeamC, yBeamC):
         d = np.sqrt(np.sum((self.x - xBeamC )**2 + (self.y - yBeamC )**2))
         return(d)
-    ## Function to calculate distance from this point to isocenter
-    def distToIsoC(self):
+    ## Function to calculate distance from this point to isocenter (not used)
+    def distToIsoC(self, thiscase):
         d = np.sqrt(np.sum((self.x - thiscase.isoX)**2 + (self.y - thiscase.isoY)**2))
         return(d)
     ## This function finds whether a point lies INSIDE the line SEGMENT between the beamlet and the voxel or not.
@@ -58,7 +58,7 @@ class voxelbeamletpair:
             ininterior = True
         return(ininterior)
     ## Find the depth of this voxel inside the body
-    def depthBeamC(self, xBeamC, yBeamC):
+    def depthBeamC(self, xBeamC, yBeamC, R):
         ## To understand the methodology look at http://mathworld.wolfram.com/Circle-LineIntersection.html
         x2 = xBeamC
         y2 = yBeamC
@@ -69,10 +69,10 @@ class voxelbeamletpair:
         dr = np.sqrt(dx**2 + dy**2)
         D = x1 * y2 - x2 * y1
         ## There are two point of intersection
-        xinterp = (D * dy + np.sign(dy) * dx * np.sqrt(thiscase.R**2 * dr**2 - D**2))/(dr**2)
-        xinterm = (D * dy - np.sign(dy) * dx * np.sqrt(thiscase.R**2 * dr**2 - D**2))/(dr**2)
-        yinterp = (-D * dx + np.abs(dy) * np.sqrt(thiscase.R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
-        yinterm = (-D * dx - np.abs(dy) * np.sqrt(thiscase.R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
+        xinterp = (D * dy + np.sign(dy) * dx * np.sqrt(R**2 * dr**2 - D**2))/(dr**2)
+        xinterm = (D * dy - np.sign(dy) * dx * np.sqrt(R**2 * dr**2 - D**2))/(dr**2)
+        yinterp = (-D * dx + np.abs(dy) * np.sqrt(R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
+        yinterm = (-D * dx - np.abs(dy) * np.sqrt(R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
         ## Check which one of the intersection points lies in the segment. Only 1 coordinate necessary.
         if (self.isinterior(xinterp, xBeamC)):
             intX = xinterp
@@ -89,7 +89,8 @@ class voxelbeamletpair:
 class VOI:
     numVOIs = 0
     __metaclass__ = ABCMeta
-    def __init__(self, x = 0.0, y = 0.0, r = 0.0):
+    def __init__(self, thiscase, x = 0.0, y = 0.0, r = 0.0):
+        self.tc = thiscase
         ## X location of center
         self.xcenter = x
         ## Y location of ceter
@@ -105,8 +106,8 @@ class VOI:
     def isContained(self):
         isv = True
         ## Find radius from center of VOI to center of structure
-        distcenter = np.sqrt((self.xcenter - thiscase.isoX)**2 + (self.ycenter - thiscase.isoY)**2)
-        if distcenter + self.radius > thiscase.R:
+        distcenter = np.sqrt((self.xcenter - self.tc.isoX)**2 + (self.ycenter - self.tc.isoY)**2)
+        if distcenter + self.radius > self.tc.R:
             isv = False
         return (isv)
     ## This method takes a location in space and returns whether this location exists in this VOI or not
@@ -123,10 +124,10 @@ class VOI:
 
 class OAR(VOI):
     numOARS = 0
-    def __init__(self, x = 0.0, y = 0.0, r = 0.0):
+    def __init__(self, thiscase, x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = True
-        super(OAR, self).__init__(x, y, r)
+        super(OAR, self).__init__(thiscase, x, y, r)
         ## Assign an ID to each of the different OARs
         self.OARID = OAR.numOARS
         OAR.numOARS = OAR.numOARS + 1
@@ -135,10 +136,10 @@ class OAR(VOI):
 
 class TARGET(VOI):
     numTARGETS = 0
-    def __init__(self, x = 0.0, y = 0.0, r = 0.0):
+    def __init__(self, thiscase,  x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = False
-        super(TARGET, self).__init__(x, y, r)
+        super(TARGET, self).__init__(thiscase, x, y, r)
         ## Assign an ID to each of the different targets
         self.TARGETID = TARGET.numTARGETS
         TARGET.numTARGETS = TARGET.numTARGETS + 1
@@ -147,7 +148,8 @@ class TARGET(VOI):
 
 ## The next class defines a control point; in particular, the location of all beamlets
 class ControlPoint:
-    def __init__(self, ctrlAngle):
+    def __init__(self, ctrlAngle, thiscase):
+        self.tc = thiscase
         self.angleDegs = ctrlAngle
         self.angleRads = (2 * np.pi * self.angleDegs)/360
         rotMat = np.matrix([[np.cos(self.angleRads), -np.sin(self.angleRads)], [np.sin(self.angleRads), np.cos(self.angleRads)]])
@@ -158,7 +160,7 @@ class ControlPoint:
     ## Find normal distances to each of the beamlet array centers
     def findNDist(self, x, y):
         distances = []
-        for i in range(0, thiscase.N):
+        for i in range(0, self.tc.N):
             beamlet = (self.thisFan[0,i], self.thisFan[1,i])
             #print('i, beamlet, x, y: ', i, beamlet, x, y)
             #print('unit vector', self.UnitVector)
@@ -185,7 +187,7 @@ class voxel:
 
 ## This function calculates the total dose given a depth
 def calcDose(depth):
-    return(1/depth)
+    return(np.exp(-0.04 * depth))
 
 ## This function takes a list of numeric values as arguments and produces the list of D matrices
 ## The box has isocenter on position thiscase.x
@@ -201,9 +203,9 @@ def calcDose(depth):
 # Outputs:
 # listofD = List of D matrix objects
 # upper right corner is (X,Y), lower left corner is (-X, -Y)
-def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARS, TARGETS):
-    ## Generate 360 control points
-    cps = [ControlPoint(i) for i in anglelist]
+def createDosetoPoints(thiscase, anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARS, TARGETS):
+    ## Generate 360 control point
+    cps = [ControlPoint(i, thiscase) for i in anglelist]
     ## Create voxels
     voxelhoz = np.arange(-xgeoloc, xgeoloc, 2 * xgeoloc/numhozv) + xgeoloc/numhozv
     voxelvec = np.arange(-ygeoloc, ygeoloc, 2 * ygeoloc/numverv) + ygeoloc/numverv
@@ -228,10 +230,10 @@ def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OA
                 bs = bsst[0]
                 for blet in bs:
                     vbpair = voxelbeamletpair(v)
-                    vbpair.depthBeamC(cp.thisFan[0, bs[0]], cp.thisFan[1, bs[0]])
+                    vbpair.depthBeamC(cp.thisFan[0, bs[0]], cp.thisFan[1, bs[0]], thiscase.R)
                     D[v.voxelID, bs[0]] = calcDose(vbpair.depth)
         Dlist.append(D)
-    return(Dlist)
+    return(Dlist, voxels)
 
 ## This function is here to find the beamlets associated with a particular voxel at a certain control point
 ## You should be able to change it in case the team requires a different function
@@ -240,7 +242,7 @@ def findvoxbeamlets(x, y, cp):
     return([(i, dists[i]) for i in range(0, len(dists)) if dists[i] < 0.6/2])
 
 ## Implementation part that should be separated later
-def plotstructure(OARlist, TARGETlist, xgeo, ygeo):
+def plotstructure(thiscase, OARlist, TARGETlist, xgeo, ygeo, voxels):
     ## This function plots the case to make sure that everything is understood
     numOARS = len(OARlist)
     numTARGETS = len(TARGETlist)
@@ -258,29 +260,3 @@ def plotstructure(OARlist, TARGETlist, xgeo, ygeo):
         fig.gca().add_artist(circle)
     fig.suptitle('Case Plot')
     fig.savefig('plotcase.png')
-
-bodyradius = 25.0
-thiscase = caseinfo(0.0, 0.0, bodyradius)
-## Create 3 OARs around the body
-OARlist = []
-OARlist.append(OAR(15.0, 0.0, 7.0))
-OARlist.append(OAR(8.0, 12.0, 2.5))
-OARlist.append(OAR(-3.0, 2.0, 1.3))
-OARlist.append(OAR(1.1, -11.4, 4.0))
-TARGETlist = []
-TARGETlist.append(TARGET(0.0, 0.0, 2.2))
-TARGETlist.append(TARGET(-4.0, -4.0, 1.2))
-
-## Initialize an instance. This is not necessary but it is good practice.
-xgeoloc = bodyradius
-ygeoloc = bodyradius
-plotstructure(OARlist, TARGETlist, xgeoloc, ygeoloc)
-numhozv = 20
-numverv = 20
-xgeoloc = bodyradius
-ygeoloc = bodyradius
-radius = bodyradius
-anglelist = [i * 360 / 51 for i in range(0, 51)]
-
-myDs = createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARlist, TARGETlist)
-print(myDs)
