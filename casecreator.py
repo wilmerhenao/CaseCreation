@@ -51,14 +51,12 @@ class geoloc:
     def distToIsoC(self):
         d = np.sqrt(np.sum((self.x - thiscase.isoX)**2 + (self.y - thiscase.isoY)**2))
         return(d)
-
     ## This function finds whether a point lies INSIDE the line SEGMENT between the beamlet and the voxel or not.
     def isinterior(self, xinterp, xBeamC):
         ininterior = False
         if (np.min(xBeamC, self.x) <= xinterp and xinterp <= np.max(xBeamC, self.x)):
             ininterior = True
         return(ininterior)
-
     ## Find the depth of this voxel inside the body
     def depthBeamC(self, xBeamC, yBeamC, zBeamC, dBeamlettoIso):
         ## To understand the methodology look at http://mathworld.wolfram.com/Circle-LineIntersection.html
@@ -132,7 +130,6 @@ class OAR(VOI):
         ## Assign an ID to each of the different OARs
         self.OARID = OAR.numOARS
         OAR.numOARS = OAR.numOARS + 1
-
     def printVOI(self):
         print('OAR with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
 
@@ -156,15 +153,19 @@ class ControlPoint:
         rotMat = np.matrix([[np.cos(self.angleRads), -np.sin(self.angleRads)], [np.sin(self.angleRads), np.cos(self.angleRads)]])
         self.thisFan = rotMat * thiscase.genFan2D
         ## Find the unit vector that points towards the isocenter
-        self.UnitVector = (-np.cos(self.angleRads), -np.sin(self.angleRads))
+        self.UnitVector = (np.sin(self.angleRads), -np.cos(self.angleRads))
         self.normaltoUnit = (-self.UnitVector[1], self.UnitVector[0])
-    ## Find normal distances to each of the beamlet array centers.
+        print('angle in radians, degrees and unit vectors: ', self.angleRads, self.angleDegs, self.UnitVector)
+    ## Find normal distances to each of the beamlet array centers
     def findNDist(self, x, y):
         distances = []
         for i in range(0, thiscase.N):
             beamlet = (self.thisFan[0,i], self.thisFan[1,i])
+            #print('i, beamlet, x, y: ', i, beamlet, x, y)
+            #print('unit vector', self.UnitVector)
             vecpos = x - beamlet[0], y - beamlet[1]
-            distances.append(math.fabs(vecpos[1] * self.normaltoUnit[0] + vecpos[0] * self.normaltoUnit[1]))
+            #print('distance:', math.fabs(vecpos[1] * self.normaltoUnit[1] + vecpos[0] * self.normaltoUnit[0]))
+            distances.append(math.fabs(vecpos[1] * self.normaltoUnit[1] + vecpos[0] * self.normaltoUnit[0]))
         return(distances)
 
 class voxel:
@@ -172,6 +173,7 @@ class voxel:
         self.x = vc[0]
         self.y = vc[1]
         self.belongsToVOI = False
+        ## ID of the VOI to which this belongs to
         self.inStructureID = None
         ## Run this code for all OARs and TARGETs, preference to targets
         for voi in OARS + TARGETS:
@@ -210,14 +212,14 @@ def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OA
     ## Filter only those voxels that belong in any VOI. This is the order that will be preserved
     voxels = [vxinvoi for vxinvoi in allvoxels if vxinvoi.belongsToVOI]
     allvoxels = None # Free some memory
-
     Dlist = []
     ## Create a matrix for each of the control points.
     for cp in cps:
-        D = csr_matrix((len(voxels), caseinfo.N), dtype=np.float)
+        D = csr_matrix((len(voxels), caseinfo.N), dtype = np.float)
         for v in voxels:
             dists = cp.findNDist(v.x, v.y)
-            print(dists)
+            #print('Ds', v.x, v.y, dists)
+            print(np.min(dists))
         Dlist.append(D)
     return(Dlist)
 
