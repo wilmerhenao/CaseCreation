@@ -21,17 +21,22 @@ from scipy.sparse import csr_matrix, lil_matrix
 
 ## Class with static information about the case
 class caseinfo:
+    ## Center of the body (which also will contain a tumour) Coord. X
     isoX = 0.0
+    ## Center of the body (which also will contain a tumour) Coord. X
     isoY = 0.0
-    R = 1.0
+    ## Default radius of the body. Will be overriden
+    R = 20.0
     ## Number of beamlets in the fan
     N = 64
+    ## Interbeamlet distance in the fan. Which amounts to 6mms.
     interleaf = 0.6
     ## Source to axis distance calibration in cms
     SAD = 80
-    ## Original fan
+    ## Original fan with N positions (64)
     genFan2D = None
-    def __init__(self, x = 0.0, y = 0.0, radio = 1.0):
+    ## Constructor
+    def __init__(self, x = 0.0, y = 0.0, radio = 20.0):
         self.isoX = x
         self.isoY = y
         self.R = radio
@@ -39,9 +44,13 @@ class caseinfo:
 
 ## Class that uses a data pair and implements some geographical operations. Depth of the voxel given beam.
 class voxelbeamletpair:
+    ## Constructor Function
     def __init__(self, v):
+        ## Voxel center x coordinate
         self.x = v.x
+        ## Voxel Center y coordinate
         self.y = v.y
+        ## Variable containing the depth of the voxel in the direction from the beamlet or how much the beam travels.
         self.depth = None
     ## This function calculates the distance from my geographical location to the center of a beamlet
     def distToBeamC(self, xBeamC, yBeamC):
@@ -57,9 +66,11 @@ class voxelbeamletpair:
         if (min(xBeamC, self.x) <= xinterp and xinterp <= max(xBeamC, self.x)):
             ininterior = True
         return(ininterior)
-    ## Find the depth of this voxel inside the body
+    ## Find the depth of this voxel inside the body. The depth will be the only factor used in order to calculate
+    # accumulated dose.
     def depthBeamC(self, xBeamC, yBeamC, R):
         ## To understand the methodology look at http://mathworld.wolfram.com/Circle-LineIntersection.html
+        # First I initialize some variables
         x2 = xBeamC
         y2 = yBeamC
         x1 = self.x
@@ -68,28 +79,32 @@ class voxelbeamletpair:
         dy = y2 - y1
         dr = np.sqrt(dx**2 + dy**2)
         D = x1 * y2 - x2 * y1
-        ## There are two point of intersection
+        # There are two point of intersection
         xinterp = (D * dy + np.sign(dy) * dx * np.sqrt(R**2 * dr**2 - D**2))/(dr**2)
         xinterm = (D * dy - np.sign(dy) * dx * np.sqrt(R**2 * dr**2 - D**2))/(dr**2)
         yinterp = (-D * dx + np.abs(dy) * np.sqrt(R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
         yinterm = (-D * dx - np.abs(dy) * np.sqrt(R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
-        ## Check which one of the intersection points lies in the segment. Only 1 coordinate necessary.
+        # Check which one of the intersection points lies in the segment. Only 1 coordinate necessary.
         if (self.isinterior(xinterp, xBeamC)):
             intX = xinterp
             intY = yinterp
         else:
             intX = xinterm
             intY = yinterm
-        ## Check that indeed you did everything right
+        # Check that indeed you did everything right
         assert(min(xBeamC, self.x) <= intX and intX <= max(xBeamC, self.x))
-        ## Use the point of intersection to calculate the depth of the voxel
+        ## Use the point of intersection of line and circle to calculate the depth of the voxel
         self.depth = np.sqrt((intX - self.x)**2 + (intY - self.y)**2)
 
 ## Abstract class that implements a volume of interest with common location and radius. Parent of OAR and TARGET
 class VOI:
+    ## Static counter of Volumes of Interest
     numVOIs = 0
+    ## Definition necessary for an abstract class
     __metaclass__ = ABCMeta
+    ## Constructor function
     def __init__(self, thiscase, x = 0.0, y = 0.0, r = 0.0):
+        ## Object with general information about the case
         self.tc = thiscase
         ## X location of center
         self.xcenter = x
@@ -97,8 +112,11 @@ class VOI:
         self.ycenter = y
         ## Radius of the Volume of Interest. All of them are circumferences
         self.radius = r
+        ## Boolean that determines whether this is a target or not (in case of False, it is an OAR)
         self.isTarget = None
+        ## Is this region contained inside the body?
         self.isinside = self.isContained()
+        ## Unique ID for each particular Volume of Interest
         self.VOIID = VOI.numVOIs
         VOI.numVOIs = VOI.numVOIs + 1
     ## This method finds whether the attribute is viable, given its center and radius and given the center and radius
@@ -124,6 +142,8 @@ class VOI:
 
 class OAR(VOI):
     numOARS = 0
+    ## Constructor function that also calls the constructor of VOI. Notice that a VOI object is instantiated first, and
+    # then an OAR object is instantiated later
     def __init__(self, thiscase, x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = True
@@ -131,11 +151,14 @@ class OAR(VOI):
         ## Assign an ID to each of the different OARs
         self.OARID = OAR.numOARS
         OAR.numOARS = OAR.numOARS + 1
+    ## Print the characteristics of this structure on screen
     def printVOI(self):
         print('OAR with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
 
 class TARGET(VOI):
     numTARGETS = 0
+    ## Constructor function that also calls the constructor of VOI. Notice that a VOI object is instantiated first, and
+    # then a TARGET object is instantiated later
     def __init__(self, thiscase,  x = 0.0, y = 0.0, r = 0.0):
         ## Boolean. Is this a target structure?
         self.isTarget = False
@@ -143,21 +166,30 @@ class TARGET(VOI):
         ## Assign an ID to each of the different targets
         self.TARGETID = TARGET.numTARGETS
         TARGET.numTARGETS = TARGET.numTARGETS + 1
+    ## Print the characteristics of this structure on screen
     def printVOI(self):
         print('Target with center (', self.xcenter, ', ', self.ycenter, '); and radius ', self.radius)
 
-## The next class defines a control point; in particular, the location of all beamlets
+## The next class defines a control point; in particular, the location of all beamlets, notice that angle or zero is
+# located in the part above, and the gantry moves counterclockwise
 class ControlPoint:
+    ## Constructor Function
     def __init__(self, ctrlAngle, thiscase):
+        ## Global data structure of the case
         self.tc = thiscase
+        ## This control point angle in degrees
         self.angleDegs = ctrlAngle
+        ## This control point angle in radians
         self.angleRads = (2 * np.pi * self.angleDegs)/360
         rotMat = np.matrix([[np.cos(self.angleRads), -np.sin(self.angleRads)], [np.sin(self.angleRads), np.cos(self.angleRads)]])
+        ## This fan beam. Notice that it gets rotated the number of radians necessary
         self.thisFan = rotMat * thiscase.genFan2D
         ## Find the unit vector that points towards the isocenter
         self.UnitVector = (np.sin(self.angleRads), -np.cos(self.angleRads))
+        ## Find the unit vector that is perpendicular to the original unit vector
         self.normaltoUnit = (-self.UnitVector[1], self.UnitVector[0])
-    ## Find normal distances to each of the beamlet array centers
+    ## Find normal distances to each of the beamlet array centers. This function returns an array of distances from which
+    # I will choose those that are small enough to correspond to beams that affect the radiation to the supplied voxel.
     def findNDist(self, x, y):
         distances = []
         for i in range(0, self.tc.N):
@@ -169,15 +201,21 @@ class ControlPoint:
             distances.append(math.fabs(vecpos[1] * self.normaltoUnit[1] + vecpos[0] * self.normaltoUnit[0]))
         return(distances)
 
+## This class defines not only the x,y position of a voxel, but also assigns to it a unique ID and maps a structure to it.
 class voxel:
+    ## Static variable that serves as a counter of how many voxels are actively being used at any time.
     numVOXELS = 0
     def __init__(self, vc, OARS, TARGETS):
         ## Indicates a unique ID for each of the voxels
         self.voxelID = voxel.numVOXELS
+        ## x location of voxel center
         self.x = vc[0]
+        ## y location of voxel center
         self.y = vc[1]
+        ## Does this voxel belong to ANY VOI?
         self.belongsToVOI = False
-        ## ID of the VOI to which this belongs to
+        ## ID of the VOI to which this voxel belongs to. There is a hierarchy that depends on the order of the VOIS with
+        # targets taking precedence over OARs.
         self.inStructureID = None
         ## Run this code for all OARs and TARGETs, preference to targets
         for voi in OARS + TARGETS:
@@ -185,11 +223,12 @@ class voxel:
                 self.belongsToVOI = True
                 self.inStructureID = voi.VOIID
 
-## This function calculates the total dose given a depth
+## This function calculates the total dose given a certain depth. It is short but it was created independently so that
+# it is easily modified later
 def calcDose(depth):
     return(np.exp(-0.04 * depth))
 
-## This function takes a list of numeric values as arguments and produces the list of D matrices
+## This is the main function takes a list of numeric values as arguments and produces the list of D matrices
 ## The box has isocenter on position thiscase.x
 # Inputs:
 # anglelist = [list of numeric]. These are the control points

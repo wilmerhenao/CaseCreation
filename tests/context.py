@@ -3,12 +3,12 @@
 import sys
 import os
 sys.path.insert(0, os.path.abspath('..'))
-
 import casecreator
 
+## How big is the phantom going to be? remember that the aperture has 64 beamlets with a space of 0.6cm in between
 bodyradius = 20.0
 thiscase = casecreator.caseinfo(0.0, 0.0, bodyradius)
-## Create 3 OARs around the body
+## Create OARs and TARGETs around the body
 OARlist = []
 OARlist.append(casecreator.OAR(thiscase, 12.5, 0.0, 7.0))
 OARlist.append(casecreator.OAR(thiscase, 8.0, 12.0, 3.5))
@@ -20,13 +20,10 @@ TARGETlist.append(casecreator.TARGET(thiscase, 0.0, 0.0, 2.2))
 TARGETlist.append(casecreator.TARGET(thiscase, -4.0, -4.0, 1.2))
 TARGETlist.append(casecreator.TARGET(thiscase, 5.0, 5.0, 2.7))
 
-## Initialize an instance. This is not necessary but it is good practice.
 xgeoloc = bodyradius
 ygeoloc = bodyradius
-numhozv = 20
-numverv = 20
-xgeoloc = bodyradius
-ygeoloc = bodyradius
+numhozv = 10
+numverv = 10
 radius = bodyradius
 anglelist = [i * 360 / 51 for i in range(0, 51)]
 
