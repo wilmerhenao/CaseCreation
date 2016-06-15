@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import pylab
 import itertools
 import math
-from scipy.sparse import csr_matrix
+from scipy.sparse import csr_matrix, lil_matrix
 
 ## Class with static information about the case
 class caseinfo:
@@ -38,13 +38,13 @@ class caseinfo:
         self.genFan2D = np.matrix([[self.interleaf * (i - self.N/2 + 1/2), self.SAD] for i in range(0, self.N)]).transpose()
 
 ## Class that uses a data pair and implements some geographical operations. Depth of the voxel given beam.
-class geoloc:
-    def __init__(self, x = 0.0, y = 0.0):
-        self.x = x
-        self.y = y
+class voxelbeamletpair:
+    def __init__(self, v):
+        self.x = v.x
+        self.y = v.y
         self.depth = None
     ## This function calculates the distance from my geographical location to the center of a beamlet
-    def distToBeamC(self, xBeamC, yBeamC , zBeamC ):
+    def distToBeamC(self, xBeamC, yBeamC):
         d = np.sqrt(np.sum((self.x - xBeamC )**2 + (self.y - yBeamC )**2))
         return(d)
     ## Function to calculate distance from this point to isocenter
@@ -54,11 +54,11 @@ class geoloc:
     ## This function finds whether a point lies INSIDE the line SEGMENT between the beamlet and the voxel or not.
     def isinterior(self, xinterp, xBeamC):
         ininterior = False
-        if (np.min(xBeamC, self.x) <= xinterp and xinterp <= np.max(xBeamC, self.x)):
+        if (min(xBeamC, self.x) <= xinterp and xinterp <= max(xBeamC, self.x)):
             ininterior = True
         return(ininterior)
     ## Find the depth of this voxel inside the body
-    def depthBeamC(self, xBeamC, yBeamC, zBeamC, dBeamlettoIso):
+    def depthBeamC(self, xBeamC, yBeamC):
         ## To understand the methodology look at http://mathworld.wolfram.com/Circle-LineIntersection.html
         x2 = xBeamC
         y2 = yBeamC
@@ -73,7 +73,7 @@ class geoloc:
         xinterm = (D * dy - np.sign(dy) * dx * np.sqrt(thiscase.R**2 * dr**2 - D**2))/(dr**2)
         yinterp = (-D * dx + np.abs(dy) * np.sqrt(thiscase.R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
         yinterm = (-D * dx - np.abs(dy) * np.sqrt(thiscase.R ** 2 * dr ** 2 - D ** 2)) / (dr ** 2)
-        ## Check which one of the intersection points lies in the segment
+        ## Check which one of the intersection points lies in the segment. Only 1 coordinate necessary.
         if (self.isinterior(xinterp, xBeamC)):
             intX = xinterp
             intY = yinterp
@@ -81,7 +81,7 @@ class geoloc:
             intX = xinterm
             intY = yinterm
         ## Check that indeed you did everything right
-        assert(np.min(xBeamC, self.x) <= intX and intX <= np.max(xBeamC, self.x))
+        assert(min(xBeamC, self.x) <= intX and intX <= max(xBeamC, self.x))
         ## Use the point of intersection to calculate the depth of the voxel
         self.depth = np.sqrt((intX - self.x)**2 + (intY - self.y)**2)
 
@@ -168,7 +168,10 @@ class ControlPoint:
         return(distances)
 
 class voxel:
+    numVOXELS = 0
     def __init__(self, vc, OARS, TARGETS):
+        ## Indicates a unique ID for each of the voxels
+        self.voxelID = voxel.numVOXELS
         self.x = vc[0]
         self.y = vc[1]
         self.belongsToVOI = False
@@ -208,16 +211,25 @@ def createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OA
     voxelcenters = itertools.product(voxelhoz, voxelvec)
     ## Limit the list only to those voxels that are included in the body and assign a organ to them
     allvoxels = [voxel(voxelcenter, OARS, TARGETS) for voxelcenter in voxelcenters]
+    voxel.numVOXELS = 0 # Fix this value at zero because I will have to recount in the next line
     ## Filter only those voxels that belong in any VOI. This is the order that will be preserved
-    voxels = [vxinvoi for vxinvoi in allvoxels if vxinvoi.belongsToVOI]
+    voxels = [voxel((vxinvoi.x, vxinvoi.y), OARS, TARGETS) for vxinvoi in allvoxels if vxinvoi.belongsToVOI]
     allvoxels = None # Free some memory
     Dlist = []
     ## Create a matrix for each of the control points.
     for cp in cps:
-        D = csr_matrix((len(voxels), caseinfo.N), dtype = np.float)
+        D = lil_matrix((len(voxels), caseinfo.N), dtype = np.float)
+        #print(cp.thisFan, cp.thisFan[0,25])
         for v in voxels:
-            bs = findvoxbeamlets(v.x, v.y, cp)
-            print('bs:', bs)
+            bsst = findvoxbeamlets(v.x, v.y, cp)
+            if not bsst:
+                continue
+            else:
+                bs = bsst[0]
+                for blet in bs:
+                    vbpair = voxelbeamletpair(v)
+                    vbpair.depthBeamC(cp.thisFan[0, bs[0]], cp.thisFan[1, bs[0]])
+                    D[v.voxelID, bs[0]] = calcDose(vbpair.depth)
         Dlist.append(D)
     return(Dlist)
 
@@ -254,6 +266,7 @@ OARlist = []
 OARlist.append(OAR(15.0, 0.0, 7.0))
 OARlist.append(OAR(8.0, 12.0, 2.5))
 OARlist.append(OAR(-3.0, 2.0, 1.3))
+OARlist.append(OAR(1.1, -11.4, 4.0))
 TARGETlist = []
 TARGETlist.append(TARGET(0.0, 0.0, 2.2))
 TARGETlist.append(TARGET(-4.0, -4.0, 1.2))
@@ -269,4 +282,5 @@ ygeoloc = bodyradius
 radius = bodyradius
 anglelist = [i * 360 / 51 for i in range(0, 51)]
 
-createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARlist, TARGETlist)
+myDs = createDosetoPoints(anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARlist, TARGETlist)
+print(myDs)
