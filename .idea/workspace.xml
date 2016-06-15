@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15357674-4601-47e0-9395-a383a17935c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/code.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plotcase.png" afterPath="$PROJECT_DIR$/plotcase.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/casecreator.py" afterPath="$PROJECT_DIR$/casecreator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/index.rst" afterPath="$PROJECT_DIR$/docs/index.rst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/context.py" afterPath="$PROJECT_DIR$/tests/context.py" />
     </list>
     <ignored path="CaseCreation.iws" />
@@ -28,41 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="make.bat" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/make.bat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Makefile" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/Makefile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sample/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="casecreator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="casecreator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/casecreator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
+            <state relative-caret-position="353">
+              <caret line="249" column="44" selection-start-line="249" selection-start-column="44" selection-end-line="249" selection-end-column="44" />
               <folding>
                 <element signature="e#227#266#0" expanded="true" />
               </folding>
@@ -70,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="context.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="context.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/context.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+            <state relative-caret-position="72">
+              <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
               <folding>
                 <element signature="e#25#35#0" expanded="true" />
               </folding>
@@ -613,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1466018407555</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Separated the test from the source file and added some documentation stuff for doxygen and maybe for sphinx">
+      <created>1466025679786</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1466025679786</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -672,7 +645,8 @@
     <MESSAGE value="It looks like the projections are working fine at this point" />
     <MESSAGE value="Changed the base case to include nonreachable beamlets" />
     <MESSAGE value="The case is working right now. I will start polishing everything." />
-    <option name="LAST_COMMIT_MESSAGE" value="The case is working right now. I will start polishing everything." />
+    <MESSAGE value="Separated the test from the source file and added some documentation stuff for doxygen and maybe for sphinx" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separated the test from the source file and added some documentation stuff for doxygen and maybe for sphinx" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -773,22 +747,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/conf.py" />
-    <entry file="file://$PROJECT_DIR$/docs/make.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/Makefile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -873,14 +831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda3/Lib/site-packages/scipy/sparse/compressed.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-28783">
@@ -918,6 +868,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sample/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/Makefile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/make.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/casecreator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="249" column="44" selection-start-line="249" selection-start-column="44" selection-end-line="249" selection-end-column="44" />
+          <folding>
+            <element signature="e#227#266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/plotcase.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -925,20 +909,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/context.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+        <state relative-caret-position="72">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
           <folding>
             <element signature="e#25#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/casecreator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
-          <folding>
-            <element signature="e#227#266#0" expanded="true" />
           </folding>
         </state>
       </provider>
