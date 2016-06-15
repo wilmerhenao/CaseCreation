@@ -2,11 +2,151 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15357674-4601-47e0-9395-a383a17935c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/main.dox" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/plotcase.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/arrowdown.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/arrowright.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/bc_s.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/bdwn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_o_a_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_t_a_r_g_e_t.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_v_o_i.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/closed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/doc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/doxygen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/folderclosed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/folderopen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/nav_f.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/nav_g.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/nav_h.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/mag_sel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/search_l.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/search_m.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/search_r.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/splitbar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/sync_off.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/sync_on.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/tab_a.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/tab_b.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/tab_h.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/tab_s.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/latex/refman.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/annotated.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point-members.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_o_a_r-members.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_o_a_r.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_t_a_r_g_e_t-members.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_t_a_r_g_e_t.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_v_o_i-members.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_v_o_i.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1caseinfo-members.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1caseinfo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1geoloc-members.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1geoloc.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxel-members.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxel.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxelbeamletpair-members.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxelbeamletpair.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/classes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/doxygen.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/dynsections.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/functions.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/functions_func.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/functions_vars.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/hierarchy.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_10.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_11.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_11.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_4.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_5.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_6.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_7.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_9.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_a.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_a.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_b.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_b.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_c.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_c.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_d.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_e.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_e.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_f.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/all_f.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/classes_4.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/functions_4.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/nomatches.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/search.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/search.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/searchdata.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_0.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_0.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_4.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_5.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_6.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_7.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_9.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_a.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_a.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_b.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_b.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_c.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_c.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_d.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/search/variables_d.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/html/tabs.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/casecreator.py" afterPath="$PROJECT_DIR$/casecreator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/context.py" afterPath="$PROJECT_DIR$/tests/context.py" />
     </list>
     <ignored path="CaseCreation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +159,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="C:\Users\S170452\PycharmProjects\CaseCreation" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -62,8 +202,8 @@
       <file leaf-file-name="context.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/context.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="432">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="e#25#35#0" expanded="true" />
               </folding>
@@ -97,9 +237,9 @@
         <option value="$PROJECT_DIR$/basura" />
         <option value="$PROJECT_DIR$/docs/index.rst" />
         <option value="$PROJECT_DIR$/docs/code.rst" />
-        <option value="$PROJECT_DIR$/tests/context.py" />
         <option value="$PROJECT_DIR$/casecreator.py" />
         <option value="$PROJECT_DIR$/docs/main.dox" />
+        <option value="$PROJECT_DIR$/tests/context.py" />
       </list>
     </option>
   </component>
@@ -191,6 +331,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CaseCreation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CaseCreation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="latex" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CaseCreation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CaseCreation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -533,7 +709,21 @@
       <option name="project" value="LOCAL" />
       <updated>1466025910745</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Removed the ugly from casecreator import * and made a more decent version of it.">
+      <created>1466030441393</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1466030441393</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Included all the documentation. Decided to go with doxygen instead of sphinx just because I don't want to have to learn another tool when doxygen works for everything">
+      <created>1466030501265</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1466030501265</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -547,9 +737,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15806112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15806112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13904338" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -594,7 +784,8 @@
     <MESSAGE value="The case is working right now. I will start polishing everything." />
     <MESSAGE value="Separated the test from the source file and added some documentation stuff for doxygen and maybe for sphinx" />
     <MESSAGE value="Removed the ugly from casecreator import * and made a more decent version of it." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed the ugly from casecreator import * and made a more decent version of it." />
+    <MESSAGE value="Included all the documentation. Decided to go with doxygen instead of sphinx just because I don't want to have to learn another tool when doxygen works for everything" />
+    <option name="LAST_COMMIT_MESSAGE" value="Included all the documentation. Decided to go with doxygen instead of sphinx just because I don't want to have to learn another tool when doxygen works for everything" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -873,8 +1064,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/context.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="432">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="e#25#35#0" expanded="true" />
           </folding>
