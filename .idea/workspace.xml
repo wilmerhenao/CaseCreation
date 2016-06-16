@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15357674-4601-47e0-9395-a383a17935c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main.dox" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/main.dox" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/casecreator.py" afterPath="$PROJECT_DIR$/casecreator.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/annotated.html" afterPath="$PROJECT_DIR$/docs/html/annotated.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point-members.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point-members.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point.html" />
@@ -27,6 +24,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/functions_vars.html" afterPath="$PROJECT_DIR$/docs/html/functions_vars.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/hierarchy.html" afterPath="$PROJECT_DIR$/docs/html/hierarchy.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/index.html" afterPath="$PROJECT_DIR$/docs/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.dox" afterPath="$PROJECT_DIR$/main.dox" />
     </list>
     <ignored path="CaseCreation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -110,8 +108,8 @@
       <file leaf-file-name="main.dox" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.dox">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="75" selection-start-line="20" selection-start-column="75" selection-end-line="20" selection-end-column="75" />
+            <state relative-caret-position="51">
+              <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -621,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1466108815474</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added a dox file to welcome users in the documentation">
+      <created>1466110764612</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1466110764612</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -635,7 +640,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15806112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13904338" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -643,7 +648,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22271715" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22271715" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2028451" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -686,7 +691,8 @@
     <MESSAGE value="Added final documentation to this repository" />
     <MESSAGE value="Added voxel centers to the png plot" />
     <MESSAGE value="Updated all graphs to a presentable format. Changes to doxyfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated all graphs to a presentable format. Changes to doxyfile" />
+    <MESSAGE value="Added a dox file to welcome users in the documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a dox file to welcome users in the documentation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -975,8 +981,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.dox">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="75" selection-start-line="20" selection-start-column="75" selection-end-line="20" selection-end-column="75" />
+        <state relative-caret-position="51">
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
           <folding />
         </state>
       </provider>
