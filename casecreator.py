@@ -298,4 +298,7 @@ def plotstructure(thiscase, OARlist, TARGETlist, xgeo, ygeo, voxels):
         circle = plt.Circle((TARGETlist[i].xcenter, TARGETlist[i].ycenter), TARGETlist[i].radius, color = 'r', fill = False)
         fig.gca().add_artist(circle)
     fig.suptitle('Case Plot')
+    ## Plot points in the voxel structure
+    for v in voxels:
+        plt.plot(v.x, v.y, 'ro')
     fig.savefig('plotcase.png')
