@@ -44,6 +44,7 @@ class caseinfo:
 
 ## Class that uses a data pair and implements some geographical operations. Depth of the voxel given beam.
 class voxelbeamletpair:
+    plotsomething = 0
     ## Constructor Function
     def __init__(self, v):
         ## Voxel center x coordinate
@@ -52,7 +53,7 @@ class voxelbeamletpair:
         self.y = v.y
         ## Variable containing the depth of the voxel in the direction from the beamlet or how much the beam travels.
         self.depth = None
-    ## This function calculates the distance from my geographical location to the center of a beamlet
+    ## This function calculates the distance from my geographical location to the center of a beamlet (not used)
     def distToBeamC(self, xBeamC, yBeamC):
         d = np.sqrt(np.sum((self.x - xBeamC )**2 + (self.y - yBeamC )**2))
         return(d)
@@ -95,6 +96,25 @@ class voxelbeamletpair:
         assert(min(xBeamC, self.x) <= intX and intX <= max(xBeamC, self.x))
         ## Use the point of intersection of line and circle to calculate the depth of the voxel
         self.depth = np.sqrt((intX - self.x)**2 + (intY - self.y)**2)
+        if 2810 == self.plotsomething:
+            print('plotting something')
+            circlemain = plt.Circle((0, 0), 20, color='blue', fill=False)
+            fig2 = plt.gcf()
+            fig2.gca().add_artist(circlemain)
+            pylab.xlim([min(xBeamC, self.x) - 2, max(xBeamC, self.x) + 2])
+            pylab.ylim([min(yBeamC, self.y) - 2, max(yBeamC, self.y) + 2])
+            fig2.suptitle('Ray Plot. Beamlet source located at ('+ str(xBeamC) + ', ' + str(yBeamC) + ')')
+            plt.plot([self.x, xBeamC], [self.y, yBeamC], 'ro', mew = 10)
+            # Plot the line segment from the voxel center to the beamlet
+            # Calculate directionvector
+            vx = xBeamC - self.x
+            vy = yBeamC - self.y
+            nm = np.sqrt(vx**2 + vy**2)
+            vx, vy = self.depth * vx/nm, self.depth * vy/nm
+            plt.plot((self.x, self.x + vx), (self.y, self.y + vy), 'r', lw = 1)
+            plt.plot((self.x + vx, xBeamC), (self.y + vy, yBeamC), 'g--', lw = 1)
+            fig2.savefig('voxelandray.png')
+        voxelbeamletpair.plotsomething = voxelbeamletpair.plotsomething + 1
 
 ## Abstract class that implements a volume of interest with common location and radius. Parent of OAR and TARGET
 class VOI:

@@ -23,8 +23,8 @@ TARGETlist.append(casecreator.TARGET(thiscase, 5.0, 5.0, 2.7))
 xgeoloc = bodyradius
 ygeoloc = bodyradius
 
-numhozv = 10
-numverv = 10
+numhozv = 30
+numverv = 30
 radius = bodyradius
 anglelist = [i * 360 / 51 for i in range(0, 51)]
 
