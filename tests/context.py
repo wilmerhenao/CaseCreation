@@ -28,6 +28,6 @@ numverv = 30
 radius = bodyradius
 anglelist = [i * 360 / 51 for i in range(0, 51)]
 
-[myDs, voxels] = casecreator.createDosetoPoints(thiscase, anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARlist, TARGETlist)
+[myDs, voxels] = casecreator.createDosetoPoints(thiscase, anglelist, numhozv, numverv, xgeoloc, ygeoloc, OARlist, TARGETlist)
 casecreator.plotstructure(thiscase, OARlist, TARGETlist, xgeoloc, ygeoloc, voxels)
 print(myDs)

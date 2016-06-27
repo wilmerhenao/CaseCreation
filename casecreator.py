@@ -1,6 +1,4 @@
-
 #!/home/wilmer/anaconda3/bin/python
-
 
 __author__ = 'wilmer'
 try:
@@ -257,13 +255,12 @@ def calcDose(depth):
 # numverv = Number of vertical voxel divisions
 # xgeoloc = X Geographic location of upper-right side of box
 # ygeoloc = Y Geographic location of upper-right side of box
-# radius  = Radius of the body
 # OARList = List of OAR centers and radiuses
 # TARGETList = List of Target centers and radiuses
 # Outputs:
 # listofD = List of D matrix objects
 # upper right corner is (X,Y), lower left corner is (-X, -Y)
-def createDosetoPoints(thiscase, anglelist, numhozv, numverv, xgeoloc, ygeoloc, radius, OARS, TARGETS):
+def createDosetoPoints(thiscase, anglelist, numhozv, numverv, xgeoloc, ygeoloc, OARS, TARGETS):
     ## Generate 360 control point
     cps = [ControlPoint(i, thiscase) for i in anglelist]
     ## Create voxels
