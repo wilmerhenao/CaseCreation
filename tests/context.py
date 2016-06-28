@@ -63,6 +63,7 @@ casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pul
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myDijs_out.bin', dlist, np.float32)
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myoptmask.img', masklist, np.int32)
 
-dataFileDict = {'K': numcps, 'N': numgantrybeamlets}
+dataFileDict = {'K': numcps, 'N': numgantrybeamlets, 'OARIDs' : [oar.OARID for oar in OARlist], 'TARGETIDs' : [tgt.TARGETID for tgt in TARGETlist]}
+print(dataFileDict['K'])
 with open('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/mydict.pckl', 'wb') as ff:
     pickle.dump(dataFileDict, ff)
