@@ -2,34 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15357674-4601-47e0-9395-a383a17935c0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/Makefile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/index.rst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/latex/refman.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/make.bat" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/CaseCreation.iml" afterPath="$PROJECT_DIR$/.idea/CaseCreation.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/casecreator.py" afterPath="$PROJECT_DIR$/casecreator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/annotated.html" afterPath="$PROJECT_DIR$/docs/html/annotated.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point-members.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_control_point.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_o_a_r-members.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_o_a_r-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_o_a_r.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_o_a_r.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_t_a_r_g_e_t-members.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_t_a_r_g_e_t-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_t_a_r_g_e_t.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_t_a_r_g_e_t.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_v_o_i-members.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_v_o_i-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_v_o_i.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1_v_o_i.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1caseinfo-members.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1caseinfo-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1caseinfo.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1caseinfo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxel-members.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxel-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxel.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxelbeamletpair-members.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxelbeamletpair-members.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxelbeamletpair.html" afterPath="$PROJECT_DIR$/docs/html/classcasecreator_1_1voxelbeamletpair.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/classes.html" afterPath="$PROJECT_DIR$/docs/html/classes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/functions.html" afterPath="$PROJECT_DIR$/docs/html/functions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/functions_func.html" afterPath="$PROJECT_DIR$/docs/html/functions_func.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/functions_vars.html" afterPath="$PROJECT_DIR$/docs/html/functions_vars.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/hierarchy.html" afterPath="$PROJECT_DIR$/docs/html/hierarchy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/html/index.html" afterPath="$PROJECT_DIR$/docs/html/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/context.py" afterPath="$PROJECT_DIR$/tests/context.py" />
     </list>
     <ignored path="CaseCreation.iws" />
@@ -51,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="casecreator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="casecreator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/casecreator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="270" column="99" selection-start-line="270" selection-start-column="99" selection-end-line="270" selection-end-column="99" />
+            <state relative-caret-position="433">
+              <caret line="325" column="40" selection-start-line="325" selection-start-column="40" selection-end-line="325" selection-end-column="40" />
               <folding>
                 <element signature="e#226#265#0" expanded="true" />
               </folding>
@@ -63,11 +37,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="context.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="context.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/context.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="232">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="borrame.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/borrame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,14 +86,15 @@
         <option value="$PROJECT_DIR$/docs/Doxyfile" />
         <option value="$PROJECT_DIR$/docs/main.dox" />
         <option value="$PROJECT_DIR$/main.dox" />
+        <option value="$PROJECT_DIR$/tests/borrame.py" />
         <option value="$PROJECT_DIR$/casecreator.py" />
         <option value="$PROJECT_DIR$/tests/context.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="138" />
-    <option name="width" value="1784" />
+    <option name="x" value="371" />
+    <option name="width" value="1551" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -169,34 +154,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CaseCreation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CaseCreation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CaseCreation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CaseCreation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="docs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -214,23 +171,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.context">
-    <configuration default="false" name="tt090" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\S170452\AppData\Local\Continuum\Anaconda2\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../ThinkinginTkinter" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CaseCreation" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../ThinkinginTkinter/tt090.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="tt095" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -295,6 +235,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="CaseCreation" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/context.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="borrame" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CaseCreation" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/borrame.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -451,19 +408,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.tt090" />
-      <item index="1" class="java.lang.String" itemvalue="Python.tt095" />
-      <item index="2" class="java.lang.String" itemvalue="Python.tt100" />
-      <item index="3" class="java.lang.String" itemvalue="Python.casecreator" />
-      <item index="4" class="java.lang.String" itemvalue="Python.context" />
+      <item index="0" class="java.lang.String" itemvalue="Python.tt095" />
+      <item index="1" class="java.lang.String" itemvalue="Python.tt100" />
+      <item index="2" class="java.lang.String" itemvalue="Python.casecreator" />
+      <item index="3" class="java.lang.String" itemvalue="Python.context" />
+      <item index="4" class="java.lang.String" itemvalue="Python.borrame" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.context" />
-        <item index="1" class="java.lang.String" itemvalue="Python.casecreator" />
-        <item index="2" class="java.lang.String" itemvalue="Python.tt100" />
-        <item index="3" class="java.lang.String" itemvalue="Python.tt095" />
-        <item index="4" class="java.lang.String" itemvalue="Python.tt090" />
+        <item index="1" class="java.lang.String" itemvalue="Python.borrame" />
+        <item index="2" class="java.lang.String" itemvalue="Python.casecreator" />
+        <item index="3" class="java.lang.String" itemvalue="Python.tt100" />
+        <item index="4" class="java.lang.String" itemvalue="Python.tt095" />
       </list>
     </recent_temporary>
   </component>
@@ -628,7 +585,14 @@
       <option name="project" value="LOCAL" />
       <updated>1466114106952</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="removed an unnecessary variable">
+      <created>1467056440657</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1467056440657</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -641,15 +605,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="138" y="0" width="1784" height="1040" extended-state="0" />
+    <frame x="371" y="0" width="1551" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.124856815" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08195638" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13904338" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1585504" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39337015" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2028451" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -659,7 +624,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -695,7 +659,8 @@
     <MESSAGE value="Updated all graphs to a presentable format. Changes to doxyfile" />
     <MESSAGE value="Added a dox file to welcome users in the documentation" />
     <MESSAGE value="Updated main.dox to reflect the structure of this particular project. Added a new index file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated main.dox to reflect the structure of this particular project. Added a new index file" />
+    <MESSAGE value="removed an unnecessary variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed an unnecessary variable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -718,20 +683,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/docs/build/html/genindex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/build/html/sphinxmanual.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1253">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/basura">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
@@ -1033,21 +984,37 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/context.py">
+    <entry file="file://$PROJECT_DIR$/tests/myfile.dat">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/borrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/casecreator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="270" column="99" selection-start-line="270" selection-start-column="99" selection-end-line="270" selection-end-column="99" />
+        <state relative-caret-position="433">
+          <caret line="325" column="40" selection-start-line="325" selection-start-column="40" selection-end-line="325" selection-end-column="40" />
           <folding>
             <element signature="e#226#265#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/context.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

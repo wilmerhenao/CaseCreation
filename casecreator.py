@@ -241,6 +241,7 @@ class voxel:
             if voi.isInThisVOI(self.x, self.y):
                 self.belongsToVOI = True
                 self.inStructureID = voi.VOIID
+                break
 
 ## This function calculates the total dose given a certain depth. It is short but it was created independently so that
 # it is easily modified later
@@ -275,11 +276,11 @@ def createDosetoPoints(thiscase, anglelist, numhozv, numverv, xgeoloc, ygeoloc, 
     voxels = [voxel((vxinvoi.x, vxinvoi.y), OARS, TARGETS) for vxinvoi in allvoxels if vxinvoi.belongsToVOI]
     allvoxels = None # Free some memory
     Dlist = []
-    ## Create a matrix for each of the control points.
+    ## Create a matrix for each of the control points
     for cp in cps:
         D = lil_matrix((len(voxels), caseinfo.N), dtype = np.float)
-        #print(cp.thisFan, cp.thisFan[0,25])
         for v in voxels:
+            # Find beamlets associated with a particular voxel at a certain control point.
             bsst = findvoxbeamlets(v.x, v.y, cp)
             if not bsst:
                 continue
@@ -320,3 +321,10 @@ def plotstructure(thiscase, OARlist, TARGETlist, xgeo, ygeo, voxels):
     for v in voxels:
         plt.plot(v.x, v.y, 'ro')
     fig.savefig('plotcase.png')
+
+## This function saves vectors in a shape that tomotherapy project can understand
+def savevector(necfile, data, filetype):
+    print(type(data))
+    mynpdata = np.matrix(data, dtype=filetype)
+    print('dtypes', mynpdata.dtype)
+    mynpdata.tofile(necfile)
