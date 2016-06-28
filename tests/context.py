@@ -11,7 +11,8 @@ from scipy import array
 
 ## How big is the phantom going to be? remember that the aperture has 64 beamlets with a space of 0.6cm in between
 bodyradius = 20.0
-thiscase = casecreator.caseinfo(0.0, 0.0, bodyradius)
+numgantrybeamlets = 64
+thiscase = casecreator.caseinfo(0.0, 0.0, bodyradius, numgantrybeamlets)
 ## Create OARs and TARGETs around the body
 
 TARGETlist = []
@@ -27,11 +28,11 @@ OARlist.append(casecreator.OAR(thiscase, -11.1, 11.4, 2.0))
 
 xgeoloc = bodyradius
 ygeoloc = bodyradius
-
+numcps = 51
 numhozv = 30
 numverv = 30
 radius = bodyradius
-anglelist = [i * 360 / 51 for i in range(0, 51)]
+anglelist = [i * 360 / numcps for i in range(0, numcps)]
 
 [myDs, voxels] = casecreator.createDosetoPoints(thiscase, anglelist, numhozv, numverv, xgeoloc, ygeoloc, OARlist, TARGETlist)
 casecreator.plotstructure(thiscase, OARlist, TARGETlist, xgeoloc, ygeoloc, voxels)
@@ -47,17 +48,21 @@ f.close()
 # Print them in txt format
 masklist = [voxel.inStructureID for voxel in voxels]
 
-blist = []
-jlist = []
+voxlist = []
+beamlist = []
 dlist = []
 
 for D in myDs:
-    [b, j, d] = sparse.find(D)
-    blist.extend(b)
-    jlist.extend(j)
+    [vox, beam, d] = sparse.find(D)
+    voxlist.extend(vox)
+    beamlist.extend(beam)
     dlist.extend(d)
 
-casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myBixels_out.bin', blist, np.int32)
-casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myVoxels_out.bin', jlist, np.int32)
+casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myBixels_out.bin', voxlist, np.int32)
+casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myVoxels_out.bin', beamlist, np.int32)
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myDijs_out.bin', dlist, np.float32)
-casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myoptmask.bin', masklist, np.int32)
+casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myoptmask.img', masklist, np.int32)
+
+dataFileDict = {'K': numcps, 'N': numgantrybeamlets}
+with open('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/mydict.pckl', 'wb') as ff:
+    pickle.dump(dataFileDict, ff)

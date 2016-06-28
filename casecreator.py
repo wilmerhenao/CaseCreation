@@ -35,11 +35,12 @@ class caseinfo:
     ## Original fan with N positions (64)
     genFan2D = None
     ## Constructor
-    def __init__(self, x = 0.0, y = 0.0, radio = 20.0):
+    def __init__(self, x = 0.0, y = 0.0, radio = 20.0, numgantrybeamlets = 64):
         self.isoX = x
         self.isoY = y
         self.R = radio
         self.genFan2D = np.matrix([[self.interleaf * (i - self.N/2 + 1/2), self.SAD] for i in range(0, self.N)]).transpose()
+        self.N = numgantrybeamlets
 
 ## Class that uses a data pair and implements some geographical operations. Depth of the voxel given beam.
 class voxelbeamletpair:
