@@ -1,0 +1,6 @@
+{
+  "name": "Casecreation",
+  "tagline": "This is a python project that creates a particular 2-Dimensional test case of a cancer patient with tumors and OARs",
+  "body": "This project creates a circular body 2-D test case to be used to try algorithms in Radiation Therapy\r\nI anticipate this will be used to test the efficiency of beamlet size discretization and aperture controled tomotherapy\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
