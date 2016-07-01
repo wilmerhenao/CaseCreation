@@ -1,6 +1,6 @@
 {
   "name": "Casecreation",
   "tagline": "This is a python project that creates a particular 2-Dimensional test case of a cancer patient with tumors and OARs",
-  "body": "This project creates a circular body 2-D test case to be used to try algorithms in Radiation Therapy\r\nI anticipate this will be used to test the efficiency of beamlet size discretization and aperture controled tomotherapy\r\n",
+  "body": "\r\n.. image:: https://travis-ci.org/wilmerhenao/CaseCreation.svg?branch=master\r\n   :target: https://travis-ci.org/wilmerhenao/CaseCreation\r\n\r\n=============\r\nCase Creation\r\n=============\r\n\r\n\r\nThis project creates a circular body 2-D test case to be used to try algorithms in Radiation Therapy\r\nIt is only meant to be used to test the efficiency of beamlet size discretization and aperture controled tomotherapy at\r\ninitial stages.\r\n\r\nThe dose is based on a simple exponentially decreasing function. No energy buildup at penetration of any kind and no\r\nmontecarlo engine behind it. This is only for the first stages of testing algorithms and these cases are not intended to\r\nreplace clinical cases\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
