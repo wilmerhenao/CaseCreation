@@ -169,7 +169,7 @@ class OAR(VOI):
         self.isTarget = True
         super(OAR, self).__init__(thiscase, x, y, r)
         ## Assign an ID to each of the different OARs
-        self.OARID = OAR.numOARS
+        self.OARID = self.VOIID
         OAR.numOARS = OAR.numOARS + 1
     ## Print the characteristics of this structure on screen
     def printVOI(self):
@@ -184,7 +184,7 @@ class TARGET(VOI):
         self.isTarget = False
         super(TARGET, self).__init__(thiscase, x, y, r)
         ## Assign an ID to each of the different targets
-        self.TARGETID = TARGET.numTARGETS
+        self.TARGETID = self.VOIID
         TARGET.numTARGETS = TARGET.numTARGETS + 1
     ## Print the characteristics of this structure on screen
     def printVOI(self):
