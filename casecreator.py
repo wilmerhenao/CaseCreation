@@ -243,6 +243,7 @@ class voxel:
                 self.belongsToVOI = True
                 self.inStructureID = voi.VOIID
                 break
+        voxel.numVOXELS = voxel.numVOXELS + 1
 
 ## This function calculates the total dose given a certain depth. It is short but it was created independently so that
 # it is easily modified later

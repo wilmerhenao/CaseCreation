@@ -47,7 +47,6 @@ f.close()
 
 # Print them in txt format
 masklist = [voxel.inStructureID for voxel in voxels]
-
 voxlist = []
 beamlist = []
 dlist = []
@@ -58,12 +57,14 @@ for D in myDs:
     beamlist.extend(beam)
     dlist.extend(d)
 
-casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myBixels_out.bin', voxlist, np.int32)
+print('length of masklist and voxlist ' + str(len(np.unique(voxlist))) + ' ' + str(len(masklist)))
+casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myBixels_out.bin', voxlist,  np.int32)
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myVoxels_out.bin', beamlist, np.int32)
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myDijs_out.bin', dlist, np.float32)
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myoptmask.img', masklist, np.int32)
 
 dataFileDict = {'K': numcps, 'N': numgantrybeamlets, 'OARIDs' : [oar.OARID for oar in OARlist], 'TARGETIDs' : [tgt.TARGETID for tgt in TARGETlist]}
 print(dataFileDict['K'])
+
 with open('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/mydict.pckl', 'wb') as ff:
     pickle.dump(dataFileDict, ff)
