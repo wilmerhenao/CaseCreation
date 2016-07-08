@@ -301,6 +301,13 @@ def findvoxbeamlets(x, y, cp):
     dists = cp.findNDist(x, y)
     return([(i, dists[i]) for i in range(0, len(dists)) if dists[i] < 0.6/2])
 
+
+font = {'family': 'serif',
+        'color': 'black',
+        'weight': 'normal',
+        'size': 26,
+        }
+
 ## Implementation part that should be separated later
 def plotstructure(thiscase, OARlist, TARGETlist, xgeo, ygeo, voxels):
     ## This function plots the case to make sure that everything is understood
@@ -315,9 +322,11 @@ def plotstructure(thiscase, OARlist, TARGETlist, xgeo, ygeo, voxels):
     for i in range(0, numOARS):
         circle = plt.Circle((OARlist[i].xcenter, OARlist[i].ycenter), OARlist[i].radius, color = 'g', fill = False)
         fig.gca().add_artist(circle)
+        plt.text(OARlist[i].xcenter, OARlist[i].ycenter, str(OARlist[i].OARID), fontdict=font)
     for i in range(0, numTARGETS):
         circle = plt.Circle((TARGETlist[i].xcenter, TARGETlist[i].ycenter), TARGETlist[i].radius, color = 'r', fill = False)
         fig.gca().add_artist(circle)
+        plt.text(TARGETlist[i].xcenter, TARGETlist[i].ycenter, str(TARGETlist[i].TARGETID), fontdict=font)
     fig.suptitle('Case Plot')
     ## Plot points in the voxel structure
     for v in voxels:

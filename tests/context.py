@@ -57,6 +57,7 @@ for D in myDs:
     beamlist.extend(beam)
     dlist.extend(d)
 print('voxlist', voxlist)
+print(np.any(173 == voxlist))
 print('beamlist', beamlist)
 print('length of masklist and voxlist ' + str(len(np.unique(voxlist))) + ' ' + str(len(masklist)))
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myBixels_out.bin', beamlist,  np.int32)
