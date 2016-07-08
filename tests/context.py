@@ -56,10 +56,11 @@ for D in myDs:
     voxlist.extend(vox)
     beamlist.extend(beam)
     dlist.extend(d)
-
+print('voxlist', voxlist)
+print('beamlist', beamlist)
 print('length of masklist and voxlist ' + str(len(np.unique(voxlist))) + ' ' + str(len(masklist)))
-casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myBixels_out.bin', voxlist,  np.int32)
-casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myVoxels_out.bin', beamlist, np.int32)
+casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myBixels_out.bin', beamlist,  np.int32)
+casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myVoxels_out.bin', voxlist, np.int32)
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myDijs_out.bin', dlist, np.float32)
 casecreator.savevector('C:/Users/S170452/PycharmProjects/Tomotherapy-Without-Pulse/data/myoptmask.img', masklist, np.int32)
 
